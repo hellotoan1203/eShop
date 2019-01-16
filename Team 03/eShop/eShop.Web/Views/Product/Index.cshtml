@@ -1,0 +1,385 @@
+﻿@model IEnumerable<eShop.Model.Models.Product>
+@{
+    ViewBag.Title = "Products";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!--show Now-->
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<section class="contact py-lg-4 py-md-3 py-sm-3 py-3">
+    <div class="container-fluid py-lg-5 py-md-4 py-sm-4 py-3">
+        <h3 class="title text-center mb-lg-5 mb-md-4 mb-sm-4 mb-3">eShop</h3>
+        <div class="row">
+            <div class="side-bar col-lg-3">
+                <div class="search-hotel">
+                    <h3 class="agileits-sear-head">Search Here..</h3>
+                    <input type="search" placeholder="Product name..." id="search" name="title" required="">
+                    @*<input type="button" id="searchbtn">*@
+                    <button id="searchbtn" class="btn-search-form">
+                        <i class="fa fa-search"></i>
+                    </button>
+
+                </div>
+                <!-- price range -->
+                <div class="range">
+                    <h3 class="agileits-sear-head">Price range</h3>
+                    <ul class="dropdown-menu6">
+                        <li>
+                            <div id="slider-range"></div>
+                            <input type="text" id="amount" style="border: 0; color: #ffffff; font-weight: normal;" />
+                        </li>
+                    </ul>
+                </div>
+                <!-- //price range -->
+
+                <div style="padding-top: 20px">
+                    <h3 class="agileits-sear-head">Fillter by artist</h3>
+                    @{
+                        var listArtist = ViewBag.BindArtist;
+                    }
+                    @foreach (var artist in listArtist)
+                    {
+                        @*<label>
+                            <input type="checkbox" onclick="checkboxchange('@artist')"> @artist
+                        </label>*@
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox"> @artist
+                            </label>
+                        </div>
+
+                    }
+                </div>
+
+                <form class="form-horizontal" style="padding-top: 20px">
+                    <div class="form-group">
+                        <h3 class="agileits-sear-head">Sort By</h3>
+                        <select name="" id="sortBy">
+                            <option value="" selected disabled hidden>Please select</option>
+                            <option value="populariry">
+                                Popularity
+                            </option>
+                            <option value="rating">
+                                Rating
+                            </option>
+                            <option value="price">
+                                Price
+                            </option>
+                        </select>
+                    </div>
+                </form>
+                <button class="btn btn-info" onclick="resetFilter()">Reset Filter</button>
+            </div>
+            <div class="left-ads-display col-lg-9" id="dataProduct">
+                <div class="row">
+                    @foreach (var i in Model)
+                    {
+                        <div class="col-lg-4 col-md-6 col-sm-6 product-men women_two">
+                            <div class="product-toys-info">
+                                <div class="men-pro-item">
+                                    <div class="men-thumb-item">
+                                        <img src="~/Content/images/Products/@i.Image" class="img-thumbnail" alt="">
+                                        <div class="men-cart-pro">
+                                            <div class="inner-men-cart-pro">
+                                                <a href="single.html" class="link-product-add-cart">Quick View</a>
+                                            </div>
+                                        </div>
+                                        <span class="product-new-top">New</span>
+                                    </div>
+                                    <div class="item-info-product">
+                                        <div class="info-product-price">
+                                            <div class="grid_meta">
+                                                <div class="product_price">
+                                                    <h4>
+                                                        <a href="single.html">@i.Title</a>
+                                                    </h4>
+                                                    <div class="grid-price mt-2">
+                                                        <span class="money ">@i.Price</span>
+                                                    </div>
+                                                </div>
+                                                <ul class="stars">
+                                                    @for (var star = 0; star < @i.AvgStars; star++)
+                                                    {
+                                                        <li>
+                                                            <a href="#">
+                                                                <i class="fa fa-star" aria-hidden="true"></i>
+                                                            </a>
+                                                        </li>
+                                                    }
+                                                </ul>
+                                            </div>
+                                            <div class="toys single-item hvr-outline-out">
+                                                <form action="#" method="post">
+                                                    <input type="hidden" name="cmd" value="_cart">
+                                                    <input type="hidden" name="add" value="1">
+                                                    <input type="hidden" name="toys_item" value="toys (Grey)">
+                                                    <input type="hidden" name="amount" value="67.00">
+                                                    <button type="submit" class="toys-cart ptoys-cart">
+                                                        <i class="fas fa-cart-plus"></i>
+                                                    </button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="paged"></div>
+</section>
+<!-- //show Now-->
+<!-- Modal 1-->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Login</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="register-form">
+                    <form action="#" method="post">
+                        <div class="fields-grid">
+                            <div class="styled-input">
+                                <input type="text" placeholder="Your Name" name="Your Name" required="">
+                            </div>
+                            <div class="styled-input">
+                                <input type="email" placeholder="Your Email" name="Your Email" required="">
+                            </div>
+                            <div class="styled-input">
+                                <input type="password" placeholder="password" name="password" required="">
+                            </div>
+                            <button type="submit" class="btn subscrib-btnn">Login</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- //Modal 1-->
+<!--js working-->
+<script src='~/Content/js/jquery-2.2.3.min.js'></script>
+<!--//js working-->
+<!-- cart-js -->
+@*<script src="~/Content/js/minicart.js"></script>
+<script>
+    toys.render();
+
+    toys.cart.on('toys_checkout', function (evt) {
+        var items, len, i;
+
+        if (this.subtotal() > 0) {
+            items = this.items();
+
+            for (i = 0, len = items.length; i < len; i++) { }
+        }
+    });
+</script>*@
+<!-- //cart-js -->
+<!-- price range (top products) -->
+<script src="~/Content/js/jquery-ui.js"></script>
+
+<script>
+    //<![CDATA[
+    var $j = jQuery.noConflict();
+    $j(window).load(function () {
+        $j("#slider-range").slider({
+            range: true,
+            min: 0,
+            max: 9000,
+            values: [0, 6000],
+            slide: function (event, ui) {
+                $j("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
+            }
+        });
+        $j("#amount").val("$" + $j("#slider-range").slider("values", 0) + " - $" + $j("#slider-range").slider("values", 1));
+        //$("#amount").val("$" + $("#slider-range").slider("values", 0) + " - $" +$("#slider-range").slider("values", 1));
+
+    }); //]]>
+</script>
+<!-- //price range (top products) -->
+<!-- start-smoth-scrolling -->
+<script src="~/Content/js/move-top.js"></script>
+<script src="~/Content/js/easing.js"></script>
+<script>
+    jQuery(document).ready(function ($) {
+        getProductFilter();
+        $(".scroll").click(function (event) {
+            event.preventDefault();
+            $('html,body').animate({
+                scrollTop: $(this.hash).offset().top
+            }, 900);
+        });
+        
+    });
+
+    //$('checkBox').change(function () {
+    //    alert(2);
+    //    if (this.checked) {
+    //        var returnVal = confirm("Are you sure?");
+    //        $(this).prop("checked", returnVal);
+    //    }
+    //});
+    
+    $('.checkbox').on('change', function () {
+        getProductFilter();
+    });
+    $("#searchbtn").click(function () {
+        getProductFilter();
+    });
+    $('#sortBy').on('change', function () {
+        getProductFilter();
+    });
+    $('#slider-range').on('keyup mouseup', function () {
+        var values = $("#amount").val().split(' - ');
+        priceMin = values[0].slice(1, values[0].length);
+        priceMax = values[1].slice(1, values[1].length);
+        getProductFilter();
+    });
+    
+    var priceMin;
+    var priceMax;
+    $("#slider-range").slider({
+        range: true,
+        min: 0,
+        max: 9000,
+        change: function (event, ui) {
+            $("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
+        }
+    });
+    getProductFilter = function (i) {
+        var title = $("#search").val();
+        var sort = $("#sortBy").val();
+        var artistFilter = $(".checkbox input:checked").map(function () {
+            return this.labels[0].innerText.trim();
+        }).get().toString();
+        var res = encodeURI('@(Url.Action("GetSearchProducts", "ProductResult"))?title=' + title + '&sortBy=' + sort + '&priceMin=' + priceMin + '&priceMax=' + priceMax + '&page=' + i + '&artist=' + artistFilter); //+ '&priceMin=' + this.priceMin + '&priceMax' + this.priceMax
+        $("#dataProduct").load(res);
+    };
+    function resetFilter() {
+        $("#search").val("");
+        $("#sortBy").val("");
+        $(".checkbox input[type='checkbox']").prop("checked", false);
+        $j("#slider-range").slider({
+            range: true,
+            min: 0,
+            max: 9000,
+            values: [0, 6000],
+            slide: function (event, ui) {
+                $j("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
+            }
+        });
+        $j("#amount").val("$" + $j("#slider-range").slider("values", 0) + " - $" + $j("#slider-range").slider("values", 1));
+        var res = encodeURI('@(Url.Action("GetSearchProducts", "ProductResult"))');
+        $("#dataProduct").load(res);
+    }
+
+    //test checkbox function
+    function checkboxchange(artist)
+    {
+        var title = $("#search").val();
+        var sort = $("#sortBy").val();
+        var res = encodeURI('@(Url.Action("GetSearchProducts", "ProductResult"))?title=' + title + '&sortBy=' + sort + '&artist=' + artist);
+        $("#dataProduct").load(res);
+    }
+
+    function PaggingTemplate(totalPage, currentPage) {
+        var template = "";
+        var TotalPages = totalPage;
+        var CurrentPage = currentPage;
+        var PageNumberArray = Array();
+
+
+        var countIncr = 1;
+        for (var i = currentPage; i <= totalPage; i++) {
+            PageNumberArray[0] = currentPage;
+            if (totalPage != currentPage && PageNumberArray[countIncr - 1] != totalPage) {
+                PageNumberArray[countIncr] = i + 1;
+            }
+            countIncr++;
+        };
+        PageNumberArray = PageNumberArray.slice(0, 5);
+        var FirstPage = 1;
+        var ForwardOne = 1;
+        var BackwardOne = 1;
+
+        var LastPage = totalPage;
+
+        if (totalPage != currentPage) {
+            ForwardOne = currentPage + 1;
+        }
+
+        if (currentPage > 1) {
+            BackwardOne = currentPage - 1;
+        }
+
+        template = '<p style="margin-left: 8px"><strong>' + CurrentPage + " of " + TotalPages + ' pages</strong></p>';
+        template = template + '<ul class="pager">' +
+            '<li class="previous"><a href="#" onclick="GetPageData(' + FirstPage + ')"><i class="fa fa-fast-backward"></i>&nbsp;First</a></li>' +
+            //'<li><select id="selectedId"><option value="20">20</option><option value="50">50</option><option value="100">100</option><option value="150">150</option></select> </li>' +
+            '<li><a href="#" onclick="GetPageData(' + BackwardOne + ')"><i class="glyphicon glyphicon-backward"></i></a>';
+
+        var numberingLoop = "";
+        for (var i = 0; i < PageNumberArray.length; i++) {
+            numberingLoop = numberingLoop + '<a class="page-number active" onclick="GetPageData(' + PageNumberArray[i] + ')" href="#">' + PageNumberArray[i] + ' &nbsp;&nbsp;</a>'
+        }
+        template = template + numberingLoop + '<a href="#" onclick="GetPageData(' + ForwardOne + ')" ><i class="glyphicon glyphicon-forward"></i></a></li>' +
+            '<li class="next"><a href="#" onclick="GetPageData(' + LastPage + ')">Last&nbsp;<i class="fa fa-fast-forward"></i></a></li></ul>';
+        $("#paged").append(template);
+        //$('#selectedId').change(function () {
+        //    GetPageData(1, $(this).val());
+        //});
+    }
+</script>
+<!-- start-smoth-scrolling -->
+<!-- here stars scrolling icon -->
+<script>
+    var $j = jQuery.noConflict();
+    $j(document).ready(function () {
+
+        var defaults = {
+            containerID: 'toTop', // fading element id
+            containerHoverID: 'toTopHover', // fading element hover id
+            scrollSpeed: 2000,
+            easingType: 'linear'
+        };
+
+
+        $j().UItoTop({
+            easingType: 'easeOutQuart'
+        });
+
+    });
+    $("#search").autocomplete({
+        source: function (request, response) {
+            $.ajax({
+                url: '@Url.Action("AutocompleteProduct", "Product")', //"product/AutocompleteProduct",
+                dataType: "json",
+                data: {
+                    autoProduct: request.term
+                },
+                success: function (data) {
+                    response($.map(data, function (item) {
+                        return { label: item, value: item }
+                    }));
+                }
+            });
+        },
+    });
+
+</script>
+<!-- //here ends scrolling icon -->
+<!--bootstrap working-->
+@*<script src="~/Content/js/bootstrap.min.js"></script>*@
+<!-- //bootstrap working-->      <!-- //OnScroll-Number-Increase-JavaScript -->

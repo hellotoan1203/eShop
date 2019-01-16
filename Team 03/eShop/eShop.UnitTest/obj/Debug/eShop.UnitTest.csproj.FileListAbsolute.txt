@@ -1,0 +1,14 @@
+D:\HN18_TG_.NET_01\2.Trainee\10.Week10\Day01\Team 03\EShop\eShop.UnitTest\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+D:\HN18_TG_.NET_01\2.Trainee\10.Week10\Day01\Team 03\EShop\eShop.UnitTest\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+D:\HN18_TG_.NET_01\2.Trainee\10.Week10\Day01\Team 03\EShop\eShop.UnitTest\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+D:\HN18_TG_.NET_01\2.Trainee\10.Week10\Day01\Team 03\EShop\eShop.UnitTest\bin\Debug\eShop.UnitTest.dll
+D:\HN18_TG_.NET_01\2.Trainee\10.Week10\Day01\Team 03\EShop\eShop.UnitTest\bin\Debug\eShop.UnitTest.pdb
+D:\HN18_TG_.NET_01\2.Trainee\10.Week10\Day01\Team 03\EShop\eShop.UnitTest\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.dll
+D:\HN18_TG_.NET_01\2.Trainee\10.Week10\Day01\Team 03\EShop\eShop.UnitTest\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
+D:\HN18_TG_.NET_01\2.Trainee\10.Week10\Day01\Team 03\EShop\eShop.UnitTest\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.xml
+D:\HN18_TG_.NET_01\2.Trainee\10.Week10\Day01\Team 03\EShop\eShop.UnitTest\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
+D:\HN18_TG_.NET_01\2.Trainee\10.Week10\Day01\Team 03\EShop\eShop.UnitTest\obj\Debug\eShop.UnitTest.csprojAssemblyReference.cache
+D:\HN18_TG_.NET_01\2.Trainee\10.Week10\Day01\Team 03\EShop\eShop.UnitTest\obj\Debug\eShop.UnitTest.csproj.CoreCompileInputs.cache
+D:\HN18_TG_.NET_01\2.Trainee\10.Week10\Day01\Team 03\EShop\eShop.UnitTest\obj\Debug\eShop.UnitTest.csproj.CopyComplete
+D:\HN18_TG_.NET_01\2.Trainee\10.Week10\Day01\Team 03\EShop\eShop.UnitTest\obj\Debug\eShop.UnitTest.dll
+D:\HN18_TG_.NET_01\2.Trainee\10.Week10\Day01\Team 03\EShop\eShop.UnitTest\obj\Debug\eShop.UnitTest.pdb

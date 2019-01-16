@@ -1,0 +1,89 @@
+﻿@using eShop.Web.Attributes
+@{
+	var currentUser = UserHelper.GetCurrentUser();
+}
+<div class="header-outs" id="home">
+	<div class="header-bar">
+		<nav class="navbar navbar-expand-lg navbar-light pl-5 pr-5">
+			<div class="logo-head" style="margin-top: -12px;">
+				<h1>
+					<a class="navbar-brand" href="index.html">
+						<img src="~/Content/images/logo2.png" alt="Italian Trulli" style="width:100px">
+					</a>
+				</h1>
+			</div>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse justify-content-flex-start cart-icons" id="navbarSupportedContent">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item @(ViewBag.Current == "Home" ? "active" : "")">
+						<a class="nav-link" href="@Url.Action("Index","Home")">Home <span class="sr-only">(current)</span></a>
+					</li>
+					<li class="nav-item @(ViewBag.Current == "Shop" ? "active" : "")">
+						<a href="@Url.Action("Index","Product")" class="nav-link">Shop</a>
+					</li>
+					@if (currentUser != null && currentUser.Role == 1)
+					{
+						<li class="nav-item">
+							<a class="nav-link" href="@Url.Action("Index", "UserAdmin", new { area= "" })">Admin</a>
+						</li>
+						<li class="nav-item">
+							<a href="@Url.Action("Index", "ReportAdmin", new { area= "" })" class="nav-link">Reports</a>
+						</li>
+						<li class="nav-item">
+							<a href="@Url.Action("Index", "HomeAdmin", new { area= "" })" class="nav-link">Dashboard</a>
+						</li>
+						<li class="nav-item">
+							<a href="@Url.Action("Index", "AdHocAdmin", new { area= "" })" class="nav-link">Adhoc</a>
+						</li>
+					}
+					<li class="nav-item @(ViewBag.Current == "About" ? "active" : "")">
+						<a href="@Url.Action("About","Home")" class="nav-link">About</a>
+					</li>
+				</ul>
+				<ul class="navbar-nav">
+					@if (currentUser != null)
+					{
+						<li class="nav-item dropdown">
+							<button type="button" data-toggle="dropdown"> <span class="fas fa-user pr-2 pl-2" style="width: auto">&nbsp;@Html.Raw(currentUser.Username)&nbsp;</span></button>
+							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+								<a class="nav-link" href="icon.html">Profile</a>
+								<a class="nav-link " href="@Url.Action("Logout", "Account")">Logout</a>
+							</div>
+						</li>
+					}
+					else
+					{
+						<li>
+							<button type="button" data-toggle="modal" data-target="#loginModal"> <span class="fas fa-user pr-2 pl-2" style="width: auto">&nbsp;Login&nbsp;</span></button>
+						</li>
+					}
+
+					<li class="toyscart toyscart2 cart cart box_1">
+						<form action="@Url.Action("Cart", "Shopping")" method="post" class="last">
+							<input type="hidden" name="cmd" value="_cart">
+							<input type="hidden" name="display" value="1">
+							<button class="top_toys_cart" type="submit" name="submit" value="">
+								@*@{Html.RenderAction("HeaderCart", "Shopping"); }*@
+
+							</button>
+						</form>
+					</li>
+				</ul>
+			</div>
+		</nav>
+	</div>
+</div>
+<!--//headder-->
+<!-- banner -->
+<div class="inner_page-banner one-img">
+</div>
+<!--//banner -->
+<!-- short -->
+<div class="using-border py-3">
+	<div class="inner_breadcrumb ml-4 m-3">
+	</div>
+</div>
+<script src="~/Content/js/getHeaderCart.js"></script>
+@Html.Partial("~/Views/Shared/_Login.cshtml")

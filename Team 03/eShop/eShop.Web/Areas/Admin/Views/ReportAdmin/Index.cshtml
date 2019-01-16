@@ -1,0 +1,53 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+
+@{ 
+    var _numberOfUser = ViewBag.AllUsers;
+    var _numberOfProduct = ViewBag.AllProducts;
+    var _numberOfOrder = ViewBag.AllOrders;
+    var _totalProfit = ViewBag.TotalProfit;
+    var _totalProfitLastWeek = ViewBag.TotalProfitLastWeek;
+
+
+}
+
+<div class="row">
+    <h1 class="title-dashboard ">Reports</h1>
+    <div class="col-md-8">
+        <div>
+            <table class="table-content">
+                <tr>
+                    <th>Item</th>
+                    <th>Records</th>
+                    <th>View</th>
+                </tr>
+                <tr>
+                    <td>Users</td>
+                    <td>@_numberOfUser</td>
+                    <td><a href="@Url.Action("Index", "ReportAdmin", new { area= "" })">content</a></td>
+                </tr>
+                <tr>
+                    <td>Products</td>
+                    <td>@_numberOfProduct</td>
+                    <td><a href="@Url.Action("Index", "ReportAdmin", new { area= "" })">content</a></td>
+                </tr>
+                <tr>
+                    <td>Orders</td>
+                    <td>@_numberOfOrder</td>
+                    <td><a href="@Url.Action("OrderReport", "ReportAdmin", new { area= "" })">content</a></td>
+                </tr>
+                
+            </table>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="total-profit">
+            <p><b>Total:</b> @_totalProfit </p>
+            <p><b>Total profit last week: </b>@_totalProfitLastWeek</p>
+        </div>
+    </div>
+</div>
+

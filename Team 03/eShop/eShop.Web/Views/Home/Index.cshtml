@@ -1,0 +1,108 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Home</title>
+	@Styles.Render("~/Content/css")
+	@Scripts.Render("~/bundles/modernizr")
+	<!--booststrap-->
+	<!-- Move CSS to App_Start/BundleConfig.cs-->
+	<!--stylesheets-->
+	@*<link href="~/Content/css/style.css" rel='stylesheet' type='text/css' media="all">*@
+	<script src='~/Content/js/jquery-2.2.3.min.js'></script>
+	<script src="~/Content/js/bootstrap.min.js"></script>
+	<script src="~/Content/js/bootbox.min.js"></script>
+	<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="~/Content/css/jquery-ui1.css">
+	<!--//stylesheets-->
+	<link href="//fonts.googleapis.com/css?family=Sunflower:500,700" rel="stylesheet">
+	<link href="//fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet">
+	<link href="~/Content/css/homepage.css" rel="stylesheet" />
+</head>
+<body>
+	<style>
+		/* Make the image fully responsive */
+		.carousel-inner img {
+			width: 300px;
+			height: 370px;
+		}
+
+		.welcome {
+			margin: 50px 0;
+		}
+
+		.navbar {
+			border-radius: 0;
+		}
+	</style>
+	@Html.Partial("~/Views/Shared/_Header.cshtml")
+	<!--//headder-->
+	<!-- banner -->
+	<div class="home_inner_page-banner">
+		<div class="container body-content centered">
+			<div class="row welcome">
+				<div class="col-lg-4 col-md-4">
+					<div id="demo" class="carousel slide lazy" data-ride="carousel">
+
+						<!-- Indicators -->
+						<ul class="carousel-indicators">
+							<li data-target="#demo" data-slide-to="0" class="active"></li>
+							<li data-target="#demo" data-slide-to="1"></li>
+							<li data-target="#demo" data-slide-to="2"></li>
+						</ul>
+
+						<!-- The slideshow -->
+						<div class="carousel-inner">
+							<div class="carousel-item active">
+								<img src="~/Content/images/Van_Gogh_starry-night1.jpg" alt="First">
+							</div>
+							<div class="carousel-item">
+								<img data-src="Content/images/Van_Gogh_sunflowers1.jpg" alt="Second">
+							</div>
+							<div class="carousel-item">
+								<img data-src="Content/images/Rembrandt_Christ_In_The_Storm_On_The_Sea_Of_Galilee1.jpg" alt="Third">
+							</div>
+							<div class="carousel-item">
+								<img data-src="Content/images/Products/Mona Lisa.jpg" alt="Fourth">
+							</div>
+						</div>
+
+						<!-- Left and right controls -->
+						<a class="carousel-control-prev" href="#demo" data-slide="prev">
+							<span class="carousel-control-prev-icon"></span>
+						</a>
+						<a class="carousel-control-next" href="#demo" data-slide="next">
+							<span class="carousel-control-next-icon"></span>
+						</a>
+
+					</div>
+				</div>
+				<div class="col-lg-8 col-lg-8">
+					<h1><strong>WELCOME</strong></h1></br>
+					<p>
+						From the Renaissance to Pop Art, here are some of the most famous artists of all time. Unlike films, art isn’t something everybody understands. So it takes a lot for an artist to really disclose in the public mind and acquire a credit for being brilliant.
+						The truth is, to be distinguished as an artist implies that your work has survived the test of time, and that’s valid for our selection of the most famous artists considered here—some of who can be found at the Metropolitan Museum of Art, the Museum of Modern Art, the Whitney Museum, the Guggenheim, and several other areas. So, without further ado, here’s our list of the most famous artists of all time.
+					</p>
+				</div>
+
+			</div>
+
+		</div>
+	</div>
+	<script>
+		$(function () {
+			return $(".carousel.lazy").on("slide.bs.carousel", function (ev) {
+				var lazy;
+				lazy = $(ev.relatedTarget).find("img[data-src]");
+				lazy.attr("src", lazy.data('src'));
+				lazy.removeAttr("data-src");
+			});
+		});
+	</script>
+</body>
+</html>
+
+
+
+

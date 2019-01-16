@@ -1,0 +1,71 @@
+﻿@using eShop.Helper
+@*@model PagedData<eShop.Model.Models.Product>*@
+@model PagedList.IPagedList<eShop.Model.Models.Product>
+@using PagedList.Mvc;
+<div class="row">
+	@foreach (var i in Model)
+	{
+		<div class="col-lg-4 col-md-6 col-sm-6 product-men women_two">
+			<div class="product-toys-info">
+				<div class="men-pro-item">
+					<div class="men-thumb-item">
+						<img src="~/Content/images/Products/@i.Image" class="img-thumbnail" alt="">
+						<div class="men-cart-pro">
+							<div class="inner-men-cart-pro">
+								<a href="@Url.Action("ProductDetail", "Shopping", new { id = i.Id })" class="link-product-add-cart">Quick View</a>
+							</div>
+						</div>
+						<span class="product-new-top">New</span>
+					</div>
+					<div class="item-info-product">
+						<div class="info-product-price">
+							<div class="grid_meta">
+								<div class="product_price">
+									<h4>
+										<a href="@Url.Action("ProductDetail", "Shopping", new { id = i.Id })">@i.Title</a>
+									</h4>
+									<div class="grid-price mt-2">
+										<span class="money ">@i.Price</span>
+									</div>
+								</div>
+								<ul class="stars">
+									@for (var star = 0; star < @i.AvgStars; star++)
+									{
+										<li>
+											<a href="#">
+												<i class="fa fa-star" aria-hidden="true"></i>
+											</a>
+										</li>
+									}
+								</ul>
+							</div>
+							<div class="toys single-item hvr-outline-out">
+								<form action="#" method="post">
+									<input type="hidden" name="cmd" value="_cart">
+									<input type="hidden" name="add" value="1">
+									<input type="hidden" name="toys_item" value="toys (Grey)">
+									<input type="hidden" name="amount" value="67.00">
+									<button type="submit" class="toys-cart ptoys-cart">
+										<i class="fas fa-cart-plus"></i>
+									</button>
+								</form>
+							</div>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	}
+</div>
+<span class="contentPager" style="color:blue; padding-left: 10px;">
+    <label>Page: </label>
+    @for (int i = 1; i <= Model.PageCount; i++)
+    {
+        <a id="myLink" href="#" onclick="getProductFilter(@i);return false;" style="color:black;">@i</a>
+    }
+</span>
+<span class="paging" style="color:blue; padding-left: 760px">
+    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+</span>
+

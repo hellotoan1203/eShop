@@ -1,0 +1,9 @@
+D:\HN18_TG_.NET_01\2.Trainee\10.Week10\Day01\Team 03\EShop\eShop.Helper\bin\Debug\eShop.Helper.dll
+D:\HN18_TG_.NET_01\2.Trainee\10.Week10\Day01\Team 03\EShop\eShop.Helper\bin\Debug\eShop.Helper.pdb
+D:\HN18_TG_.NET_01\2.Trainee\10.Week10\Day01\Team 03\EShop\eShop.Helper\bin\Debug\log4net.dll
+D:\HN18_TG_.NET_01\2.Trainee\10.Week10\Day01\Team 03\EShop\eShop.Helper\bin\Debug\log4net.xml
+D:\HN18_TG_.NET_01\2.Trainee\10.Week10\Day01\Team 03\EShop\eShop.Helper\obj\Debug\eShop.Helper.csprojAssemblyReference.cache
+D:\HN18_TG_.NET_01\2.Trainee\10.Week10\Day01\Team 03\EShop\eShop.Helper\obj\Debug\eShop.Helper.csproj.CoreCompileInputs.cache
+D:\HN18_TG_.NET_01\2.Trainee\10.Week10\Day01\Team 03\EShop\eShop.Helper\obj\Debug\eShop.Helper.csproj.CopyComplete
+D:\HN18_TG_.NET_01\2.Trainee\10.Week10\Day01\Team 03\EShop\eShop.Helper\obj\Debug\eShop.Helper.dll
+D:\HN18_TG_.NET_01\2.Trainee\10.Week10\Day01\Team 03\EShop\eShop.Helper\obj\Debug\eShop.Helper.pdb

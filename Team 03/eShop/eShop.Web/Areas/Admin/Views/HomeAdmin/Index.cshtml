@@ -1,0 +1,176 @@
+﻿
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+@{
+    var AllUsers = ViewBag.AllUsers;
+    var AllProducts = ViewBag.AllProducts;
+    var AllOrders = ViewBag.AllOrders;
+    var AllUsersInMonth = ViewBag.AllUsersInMonth;
+    var ListUser = ViewBag.ListUserInMonth;
+    var ListRegions = ViewBag.ListUserRegions;
+    var listSale = ViewBag.ListSaleInWeek;
+}
+
+
+<h1 class="title-dashboard">DashBoard</h1>
+<div class="row">
+    <div class="col-md-2 dashboard-infor col-md-offset-1">
+        <i class="fa fa-users fa-3x" style="background-color: red; padding: 10px; color:white"></i>
+        <span class="title-dashboard-infor">USERS:<br /><b>@AllUsers</b></span>
+    </div>
+    <div class="col-md-2 dashboard-infor">
+        <i class="fa fa-user fa-3x" style="background-color: yellowgreen; padding: 10px; color:white"></i>
+        <span class="title-dashboard-infor">USERS IN MONTH:<br /><b>@AllUsersInMonth</b></span>
+    </div>
+    <div class="col-md-2 dashboard-infor">
+        <i class="fa fa-briefcase fa-3x" style="background-color: olive; padding: 10px; color:white"></i>
+        <span class="title-dashboard-infor">PRODUCT:<br /><b>@AllProducts</b></span>
+    </div>
+    <div class="col-md-2 dashboard-infor">
+        <i class="fa fa-shopping-cart fa-3x" style="background-color: lightpink; padding: 10px; color:white"></i>
+        <span class="title-dashboard-infor">ORDERS:<br /><b>@AllOrders</b></span>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-8">
+        <h1 class="title-dashboard">User registration by month</h1>
+        <div id="userChart"></div>
+        <button id="sale">Sale</button>
+        <button id="User">User</button>
+    </div>
+
+    <div class="col-md-4">
+        <h1 class="title-dashboard">User regions</h1>
+        <div id="regionsChart"></div>
+    </div>
+    
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+<script>
+    var data = @Html.Raw(Json.Encode(ViewBag.ListUserInMonth));
+    var pieData = @Html.Raw(Json.Encode(ViewBag.ListUserRegions));
+    var saleData = @Html.Raw(Json.Encode(ViewBag.ListSaleInWeek));
+    $(function () {
+        $('#sale').click(function () {
+            Highcharts.chart('userChart', {
+                title: {
+                    text: 'Sale in last 4 month'
+                },
+                yAxis: {
+                    title: {
+                        text: 'Sale'
+                    }
+                },
+                legend: {
+                    layout: 'vertical',
+                    align: 'right',
+                    verticalAlign: 'middle'
+                },
+                xAxis: {
+                    categories: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16'],
+                    title: {
+                        text: 'Week'
+                    }
+                },
+                series: [{
+                    name: 'Sale',
+                    data: saleData
+                }]
+            });
+        })
+        $('#User').click(function () {
+            Highcharts.chart('userChart', {
+                title: {
+                    text: 'User last 4 months'
+                },
+                yAxis: {
+                    title: {
+                        text: 'User'
+                    }
+                },
+                legend: {
+                    layout: 'vertical',
+                    align: 'right',
+                    verticalAlign: 'middle'
+                },
+                xAxis: {
+                    categories: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16'],
+                    title: {
+                        text: 'Week'
+                    }
+                },
+                series: [{
+                    name: 'User',
+                    data: data
+                }]
+
+            });
+        })
+    });
+    Highcharts.chart('userChart', {
+        title: {
+            text: 'User in last 4 months'
+        },
+        yAxis: {
+            title: {
+                text: 'User'
+            }
+        },
+        legend: {
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'middle'
+        },
+        xAxis: {
+            categories: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16'],
+            title: {
+                text: 'Week'
+            }
+        },
+        series: [{
+            name: 'User',
+            data: data
+        }]
+
+    });
+    Highcharts.chart('regionsChart', {
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false,
+            type: 'pie'
+        },
+        title: {
+            text: 'User'
+        },
+        tooltip: {
+            pointFormat: '{series.Regions}: <b>{point.Count}</b>'
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: true,
+                    format: '<b>{point.Regions}</b>: {point.Count}',
+                    style: {
+                        color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                    }
+                }
+            }
+        },
+        series: [{
+            name: 'Brands',
+            colorByPoint: true,
+            data: pieData
+        }]
+    });
+    
+</script>
+
+

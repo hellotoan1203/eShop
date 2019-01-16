@@ -1,0 +1,6 @@
+D:\HN18_TG_.NET_01\2.Trainee\10.Week10\Day01\Team 03\EShop\eShop.Common\bin\Debug\eShop.Common.dll
+D:\HN18_TG_.NET_01\2.Trainee\10.Week10\Day01\Team 03\EShop\eShop.Common\bin\Debug\eShop.Common.pdb
+D:\HN18_TG_.NET_01\2.Trainee\10.Week10\Day01\Team 03\EShop\eShop.Common\obj\Debug\eShop.Common.csproj.CoreCompileInputs.cache
+D:\HN18_TG_.NET_01\2.Trainee\10.Week10\Day01\Team 03\EShop\eShop.Common\obj\Debug\eShop.Common.dll
+D:\HN18_TG_.NET_01\2.Trainee\10.Week10\Day01\Team 03\EShop\eShop.Common\obj\Debug\eShop.Common.pdb
+D:\HN18_TG_.NET_01\2.Trainee\10.Week10\Day01\Team 03\EShop\eShop.Common\obj\Debug\eShop.Common.csprojAssemblyReference.cache

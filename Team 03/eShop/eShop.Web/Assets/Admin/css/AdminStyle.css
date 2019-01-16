@@ -1,0 +1,86 @@
+﻿.title-dashboard {
+    font-size: 20px;
+    margin-top: 30px;
+    margin-left: 30px;
+}
+
+.dashboard-infor {
+    padding: 0px;
+    padding-left: 0px !important;
+    background-color: white;
+    box-shadow: none;
+    margin-right: 30px;
+    position: relative;
+}
+
+.title-dashboard-infor {
+    position: absolute;
+    top: 5px;
+    left: 30%;
+    margin-left: 2px;
+}
+
+.dashboard-infor:hover {
+    box-shadow: rgba(0,0,0,0.2) 2px 2px;
+}
+
+#userChart {
+    min-width: 310px;
+    max-width: 800px;
+    height: 400px;
+    margin: 0 auto;
+}
+
+.table-content {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+    .table-content td {
+        border: 1px solid #dbdaba;
+        text-align: left;
+        padding: 8px;
+    }
+    .table-content th {
+        border: 1px solid #dbdaba;
+        text-align: left;
+        padding: 8px;
+    }
+    .table-content tr:nth-child(2n) {
+        background-color: #dbdaba;
+    }
+
+.pagination-custom{
+    margin-left: 20px;
+    margin-top: 10px;
+
+}
+
+.title-products-reports{
+    float: left;
+    margin-left: 10px !important;
+    font-size: 12px;
+}
+.subtitle-products-reports{s
+    margin-left: 10px !important;
+    font-size: 10px;
+    font-style: italic;
+}
+.order-info-reports {
+    padding:10px;
+    margin-left: 20px;
+    background-color: #dbdaba;
+
+}
+.order-info-reports h2{
+    font-size: 14px;
+}
+.back-to-previous{
+    margin-top: 10px;
+    margin-left: 20px;
+    margin-bottom:10px;
+}
+#sale{
+    margin-left: 30px;
+}

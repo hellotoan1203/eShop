@@ -1,0 +1,41 @@
+﻿@model PagedList.IPagedList<eShop.Web.Areas.Admin.Models.OrdersbyUser>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "OrderReport";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+<div class="row">
+    <h1 class="title-dashboard ">Reports</h1>
+    <div class="col-md-8">
+        <div>
+            <table class="table-content">
+                <tr>
+                    <th>@Html.ActionLink("Date", "OrderReport", new { page = Model.PageNumber, sortcaterial = 1 })</th>
+                    <th>@Html.ActionLink("Customer", "OrderReport", new { page = Model.PageNumber, sortcaterial = 2 })</th>
+                    <th>@Html.ActionLink("Order", "OrderReport", new { page = Model.PageNumber, sortcaterial = 3 })</th>
+                    <th>@Html.ActionLink("Total", "OrderReport", new { page = Model.PageNumber, sortcaterial = 4 })</th>
+                    <th>@Html.ActionLink("Line Item", "OrderReport", new { page = Model.PageNumber, sortcaterial = 5 })</th>
+                    <th>Action</th>
+                </tr>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.order.OrderDate</td>
+                        <td>@item.user.FirstName</td>
+                        <td>@item.order.Id</td>
+                        <td>@item.order.TotalPrice</td>
+                        <td>@item.order.ItemCount</td>
+                        <td><a href="@Url.Action("OrderReportDetail","ReportAdmin", new { item.order.Id })">View Detail</a></td>
+                    </tr>
+                }
+
+            </table>
+            <div class="pagination-custom">
+                Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+                @Html.PagedListPager(Model, page => Url.Action("OrderReport", new { page }))
+            </div>
+            
+        </div>
+    </div>
+</div>
+

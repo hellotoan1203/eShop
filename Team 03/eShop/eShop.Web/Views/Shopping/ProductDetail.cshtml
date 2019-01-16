@@ -1,0 +1,143 @@
+﻿@model eShop.Model.Models.Product
+
+@{
+	ViewBag.Title = "Product Detail";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+	var artist = ViewBag.artist;
+}
+
+@section scripts{
+	<script src="~/Content/js/ShoppingCart.js"></script>
+}
+<section class="banner-bottom py-lg-5 py-3">
+	<div class="container">
+		<div class="inner-sec-shop pt-lg-4 pt-3">
+			<div class="row">
+				<div class="col-lg-4 single-right-left ">
+					<div class="grid images_3_of_2">
+						<div class="flexslider1">
+							<ul class="slides">
+								<li>
+									<div class="thumb-image"> <img src="~/Content/images/Products/@Model.Image" data-imagezoom="true" class="img-fluid" alt=" "> </div>
+								</li>
+							</ul>
+							<div class="clearfix"></div>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-8 single-right-left simpleCart_shelfItem">
+					<h3>@Model.Title</h3>
+					<p>
+						<span class="item_price">$@Model.Price</span>
+					</p>
+					<div class="rating1">
+						<ul class="stars">
+							@{
+								for (int i = 0; i < Model.AvgStars; i++)
+								{
+									<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+								}
+							}
+								@*<li><a href="#"><i class="fa fa-star-half-o" aria-hidden="true"></i></a></li>*@
+						</ul>
+					</div>
+					<div class="description">
+						<h5>Check delivery, payment options and charges at your location</h5>
+					</div>
+					<div class="color-quality">
+						<div class="color-quality-right">
+							<h5>Quantity :</h5>
+							<select id="ddlQuantity" class="frm-field required sect" data-productid="@Model.Id">
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+								<option value="5">5</option>
+							</select>
+							<h5 class="mt-2">(Please Contact Us If You Want To Buy More)</h5>
+						</div>
+					</div>
+					<div class="occasion-cart">
+						<div class="toys single-item singlepage">
+							@*<form action="@Url.Action("AddToCart", "Shopping", new { productId = Model.Id, quantity=1 })" method="post">*@
+								<input type="hidden" name="cmd" value="_cart">
+								<input type="hidden" name="add" value="1">
+								<input type="hidden" name="toys_item" value="Farenheit">
+								<input type="hidden" name="amount" value="575.00">
+								<button type="submit" class="toys-cart ptoys-cart add" id="btnAddToCart">
+									Add to Cart
+								</button>
+							@*</form>*@
+						</div>
+					</div>
+				</div>
+				<div class="clearfix"> </div>
+				<!--/tabs-->
+				<div class="responsive_tabs" style="width: 100%;">
+					<div id="horizontalTab">
+						<ul class="resp-tabs-list">
+							<li>Description</li>
+							<li>Artist</li>
+						</ul>
+						<div class="resp-tabs-container" style="width: 100%; min-height:300px;">
+							<!--/tab_one-->
+							<div class="tab1">
+								<div class="single_page">
+									<h6>@Model.Title</h6>
+									<p>@Html.Raw(Server.HtmlDecode(Model.Description))</p>
+								</div>
+							</div>
+							<!--//tab_one-->
+							<div class="tab2">
+								<div class="single_page">
+									<h6>@artist.Name (@artist.Born)</h6>
+									<p>@artist.Country</p>
+									<p>@artist.Description</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--//tabs-->
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- //Modal 1-->
+<!--jQuery-->
+<script src="~/Content/js/jquery-2.2.3.min.js"></script>
+<!-- newsletter modal -->
+<!-- single -->
+<script src="~/Content/js/imagezoom.js"></script>
+<!-- single -->
+<!-- script for responsive tabs -->
+<script src="~/Content/js/easy-responsive-tabs.js"></script>
+<script>
+	var $j = jQuery.noConflict();
+	$j(document).ready(function () {
+		$j('#horizontalTab').easyResponsiveTabs({
+			type: 'default', //Types: default, vertical, accordion
+			width: 'auto', //auto or any width like 600px
+			fit: true, // 100% fit in a container
+			closed: 'accordion', // Start closed if in accordion view
+			activate: function (event) { // Callback function if tab is switched
+				var $tab = $(this);
+				var $info = $('#tabInfo');
+				var $name = $('span', $info);
+				$name.text($tab.text());
+				$info.show();
+			}
+		});
+		$j('#verticalTab').easyResponsiveTabs({
+			type: 'vertical',
+			width: 'auto',
+			fit: true
+		});
+	});
+</script>
+<!--bootstrap working-->
+@*<script src="~/Content/js/bootstrap.min.js"></script>*@

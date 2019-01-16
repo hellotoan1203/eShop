@@ -1,0 +1,55 @@
+﻿@model List<eShop.Web.Areas.Admin.Models.OrderDetailRespone>
+
+@{
+        ViewBag.Title = "OrderReportDetail";
+        Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+@{ 
+    var order = ViewBag.Order;
+    var customerName = ViewBag.CustomerName;
+}
+
+<div class="back-to-previous">
+    @Html.ActionLink("Back to list orders", "OrderReport", new { page = 1, sortcaterial = 1 })
+</div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="order-info-reports">
+                <h2><b>Order ID:</b> @order.Id</h2>
+                <h2><b>Date Create:</b> @order.OrderDate</h2>
+                <h2><b>Total Price:</b> @order.TotalPrice</h2>
+                <h2><b>Customer:</b> @customerName</h2>
+            </div>
+        </div>  
+        <div class="col-md-7">
+            <table class="table-content">
+                <tr>
+                    <th>ArtWork</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>SubTotal</th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            <img src="~/Content/images/Products/@item.Image" alt="Alternate Text" width="80px" height="auto" style="float: left" />
+                            <p class="title-products-reports">
+                                <b>@item.ProductName</b>
+                                <br />
+                                <span class="subtitle-products-reports">
+                                by @item.ArtistName
+                                </span>
+                            </p>
+                        </td>
+                        <td>@item.Price</td>
+                        <td>@item.Quantity</td>
+                        <td>@item.Subtotal</td>
+                    </tr>
+                }
+            </table>
+        </div>
+
+    </div>
+
